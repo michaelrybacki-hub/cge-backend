@@ -140,7 +140,7 @@ app.post('/send-pdf-email', async (req, res) => {
     // Send detailed error message for debugging
     let errorMessage = error.message;
     if (error.response) {
-      errorMessage = `SendGrid Error: ${error.response.body.errors?.?.message || error.message}`;
+     errorMessage = `SendGrid Error: ${error.response?.body?.errors?.[0]?.message || error.message}`;
     }
     
     res.status(500).json({ 
